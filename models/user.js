@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const crypto = require('crypto');
-const { v1: uuidv1 } = require('uuid');
+import mongoose , {Schema} from 'mongoose';
+import crypto  from 'crypto';
+import {v1 as uuidv1 }from 'uuidv1';
 
-const userSchema = new mongoose.Schema(
+
+const userSchema = new Schema(
   {
     name: {
       type: String,
