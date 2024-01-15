@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const { ObjectId } = mongoose.Schema;
+import mongoose , {Schema} from 'mongoose';
+
 
 const CartItemSchema = new mongoose.Schema(
   {
@@ -8,8 +7,7 @@ const CartItemSchema = new mongoose.Schema(
     name: String,
     price: Number,
     count: Number,
-  },
-  { timestamps: true }
+  }
 );
 
 const CartItem = mongoose.model('CartItem', CartItemSchema);
@@ -17,8 +15,12 @@ const CartItem = mongoose.model('CartItem', CartItemSchema);
 const OrderSchema = new mongoose.Schema(
   {
     products: [CartItemSchema],
-    transaction_id: {},
-    amount: { type: Number },
+    transaction_id: {
+      type : Number,
+      unique:true
+    },
+    amount: { type: Number ,
+    required : true},
     address: String,
     status: {
       type: String,
@@ -32,7 +34,7 @@ const OrderSchema = new mongoose.Schema(
       ], // enum means string objects
     },
     updated: Date,
-    user: { type: ObjectId, ref: 'User' },
+    user: { type: Schema.Types.ObjectId , ref: 'User' },
   },
   { timestamps: true }
 );
