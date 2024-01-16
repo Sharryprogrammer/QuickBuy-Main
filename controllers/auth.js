@@ -1,9 +1,10 @@
-const User = require('../models/user');
-const jwt = require('jsonwebtoken'); // to generate signed token
-const expressJwt = require('express-jwt'); // for auth check
-const { errorHandler } = require('../helpers/dbErrorHandler');
+import User from '../models/user'
+import jwt from 'jsonwebtoken'
+import expressJwt from 'express-jwt'
+import {errorHandler} from '../helpers/dbErrorHandler'
+// import dotenv from "dotenv"
 
-require('dotenv').config();
+
 
 exports.signup = (req, res) => {
   // console.log('req.body', req.body);
